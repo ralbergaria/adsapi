@@ -28,7 +28,7 @@
 1. Check if you have installed:
   * [Java](https://www.java.com/en/download/)
   * [Git](https://git-scm.com/)
-  * [Docker](https://www.mongodb.org/)
+  * [Docker](https://www.docker.com/
 
 
   Tip: If you use a **Mac**, most of them can be easily installed using **[homebrew](http://brew.sh/)**
