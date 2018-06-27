@@ -43,6 +43,7 @@
 3. Install gui SQLOps:
 
   Use https://database.guide/how-to-install-sqlops-mac/
+  execute script.sql to create database.
 
 4. In root aplication Run ./mvnw spring-boot:run:
   * Assuming you are in *root* folder:
