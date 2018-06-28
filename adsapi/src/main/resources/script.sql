@@ -1,8 +1,48 @@
-CREATE DATABASE ads_eservices;
-CREATE TABLE USER_ESERVICE (
-    LOGIN varchar,
-    PASSWORD varchar,
-    audit_information varchar,
-    eservices_preferences VARCHAR,
-    CUSTOMER_MASTER_ID VARCHAR
-);
+CREATE TABLE [Customer] (
+	Login varchar NOT NULL,
+	Password varchar NOT NULL,
+	NotificationFlag BIT NOT NULL DEFAULT '0',
+	AuditId integer NOT NULL UNIQUE DEFAULT '0',
+	MasterId integer NOT NULL UNIQUE DEFAULT '0',
+	BlockedFlag BIT NOT NULL DEFAULT '0',
+	NotificationId integer NOT NULL UNIQUE DEFAULT '0',
+  CONSTRAINT [PK_CUSTOMER] PRIMARY KEY CLUSTERED
+  (
+  [Login] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Audit] (
+	Id integer NOT NULL,
+	ChangePasswordDate datetime,
+	LastLoginDate datetime NOT NULL DEFAULT 'date()',
+	UserCreateDate binary NOT NULL,
+  CONSTRAINT [PK_AUDIT] PRIMARY KEY CLUSTERED
+  (
+  [Id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+CREATE TABLE [Notification] (
+	Id integer NOT NULL,
+	SmsFlag BIT NOT NULL DEFAULT '0',
+	EmailFlag BIT NOT NULL DEFAULT '0',
+  CONSTRAINT [PK_NOTIFICATION] PRIMARY KEY CLUSTERED
+  (
+  [Id] ASC
+  ) WITH (IGNORE_DUP_KEY = OFF)
+
+)
+GO
+ALTER TABLE [Customer] WITH CHECK ADD CONSTRAINT [Customer_fk0] FOREIGN KEY ([AuditId]) REFERENCES [Audit]([Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Customer] CHECK CONSTRAINT [Customer_fk0]
+GO
+ALTER TABLE [Customer] WITH CHECK ADD CONSTRAINT [Customer_fk1] FOREIGN KEY ([NotificationId]) REFERENCES [Notification]([Id])
+ON UPDATE CASCADE
+GO
+ALTER TABLE [Customer] CHECK CONSTRAINT [Customer_fk1]
+GO
