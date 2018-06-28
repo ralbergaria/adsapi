@@ -19,9 +19,9 @@ public class UserController {
 	@Autowired UserService userService;
 	
 	@RequestMapping(value = "/isValidAccountNumber/{idAccountNumber}", method = RequestMethod.GET, produces="application/json")
-	public ResponseEntity<?> isValidAccountNumber(@PathVariable Long accountNumber){
+	public ResponseEntity<?> isValidAccountNumber(@PathVariable String accountNumber){
 		Map<String, Boolean> success = new HashMap<String, Boolean>();
-	    success.put("success", userService.isValidAccountNumber(accountNumber));
+	    success.put("success", userService.isValidAccountNumber(new Long(accountNumber)));
 	    return new ResponseEntity<>(success, HttpStatus.OK);
 	}
 }

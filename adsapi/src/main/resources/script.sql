@@ -16,8 +16,8 @@ GO
 CREATE TABLE [Audit] (
 	Id integer NOT NULL,
 	ChangePasswordDate datetime,
-	LastLoginDate datetime NOT NULL DEFAULT 'date()',
-	UserCreateDate binary NOT NULL,
+	LastLoginDate datetime NOT NULL DEFAULT 'GETDATE()',
+	UserCreateDate datetime NOT NULL,
   CONSTRAINT [PK_AUDIT] PRIMARY KEY CLUSTERED
   (
   [Id] ASC

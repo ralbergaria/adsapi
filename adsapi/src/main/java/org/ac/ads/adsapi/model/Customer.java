@@ -1,5 +1,6 @@
 package org.ac.ads.adsapi.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -21,20 +22,22 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "login")
 @ToString(of = "login")
 @Entity
-@Table(name = "Custumer")
-public class Custumer {
+@Table(name = "Customer")
+public class Customer {
 	@Id
+	@Column(name = "Login")	
 	private String login;
+	
 	private String password;
 	private Boolean notificationFlag;
 	private Integer masterId;
 	private Boolean blockedFlag;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "AuditId", insertable=false, updatable=false)
 	private Audit audit;
 	
 	@OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "NotificationId", insertable=false, updatable=false)
 	private Notification notification;
 }

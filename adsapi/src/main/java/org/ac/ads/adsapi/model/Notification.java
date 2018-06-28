@@ -2,6 +2,7 @@ package org.ac.ads.adsapi.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -22,8 +23,8 @@ import lombok.ToString;
 @Table(name = "Notification")
 public class Notification {
 	@Id
-	@GeneratedValue
-	private Long id;
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer id;
 	
 	private Boolean smsFlag;
 	private Boolean emailFlag;

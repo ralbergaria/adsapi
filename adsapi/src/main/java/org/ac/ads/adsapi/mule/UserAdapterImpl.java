@@ -1,7 +1,9 @@
 package org.ac.ads.adsapi.mule;
 
 import org.ac.ads.adsapi.endpoint.UserEndPoint;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserAdapterImpl implements UserEndPoint {
 
 	@Override
